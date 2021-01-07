@@ -21,6 +21,7 @@ window.onload = function(){
     }
 
 
+
     function showMap(coords) {
 
         L.mapquest.key = '0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j';
@@ -33,3 +34,9 @@ window.onload = function(){
         });
 
 }
+
+})
+
+
+
+
