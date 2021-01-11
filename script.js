@@ -29,6 +29,20 @@ window.onload = function () {
   //   findCities(coords);
   // }
 
+    function findGas(coords) {
+      console.log(coords.lat.toString())
+      console.log(coords.lng.toString())
+        $.ajax({  
+          url: "https://api.allorigins.win/get?url=" + "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Gas%20Station&inputtype=textquery&locationbias=circle:200@" + coords.lat.toString() + "," +  coords.lng.toString() + "&key=AIzaSyBCx0c41Dp-KbTZAAOntiA2ka7nZyE4gDQ",
+          // url: "https://cors-escape.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Gas%20Station&inputtype=textquery&locationbias=circle:200@" + coords.lat + "," +  coords.lng + "&key=AIzaSyBCx0c41Dp-KbTZAAOntiA2ka7nZyE4gDQ",
+          // url: "http://www.mapquestapi.com/search/v2/radius?key=KEY&maxMatches=4&origin=" + coords[0] +"," + coords[1],
+          method: 'GET',
+        }).then(function(data){
+          console.log("gimme gas!!!!!")
+          console.log(data)
+      })
+    }
+
 
   function findCoords(searchValue) {
 
@@ -39,6 +53,7 @@ window.onload = function () {
     }).then(function(data){
       var coords = data.results[0].locations[0].latLng
       showMap(coords)
+      findGas(coords)
     });
   }
   
@@ -56,7 +71,7 @@ window.onload = function () {
   }
   
 
-  function findGas(coords){
+  function fis(coords){
   $.ajax({  
     // url: 'https://api.allorigins.win/get?url=' + encodeURIComponent("http://api.mygasfeed.com/stations/radius/Lat=" + coords[0] + "/Lng=" + coords[1] + "/ylav87lih0.json"),
     url: "https://api.collectapi.com/gasPrice/stateUsaPrice?state=FL",
