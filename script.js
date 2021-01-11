@@ -20,8 +20,30 @@ window.onload = function () {
     showMap(coords);
   }
 
-
-
+  $.ajax({  
+    url: "https://api.collectapi.com/gasPrice/stateUsaPrice?state=FL",
+    method: 'GET',
+    headers: {
+      "authorization":"apikey 4q4IHx619b47CaX35Ji9xZ:0jz3gHaXHLos0Lj2yXBANg",
+      "content-type":"application/json"
+    }
+  }).then(function(data){
+    console.log("Gas Data" + JSON.stringify(data))
+  });
+    
+  }
+  $.ajax({
+    headers: { "Accept": "application/json"},
+    type: 'GET',
+    url: 'https://cors-proxy.htmldriven.com/?url=https://cl.ly/2wr4',
+    crossDomain: true,
+    beforeSend: function(xhr){
+        xhr.withCredentials = true;
+  },
+    success: function(data, textStatus, request){
+        console.log(data);
+    }
+});
   function showMap(coords) {
 
     L.mapquest.key = '0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j';
@@ -34,10 +56,6 @@ window.onload = function () {
     });
 
   }
-
-};
-
-
 
 
 // dropdown link movement when clicked 
@@ -56,9 +74,6 @@ window.onclick = function(eL) {
     }
   }
 }
-
-
-
 
 
 
