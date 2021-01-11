@@ -1,10 +1,16 @@
 window.onload = function () {
 
   // getLocation()
-  findCoords()
+  // findCoords()
 
   var coords = []
+  $(".button").on("click", function(e){
+    e.preventDefault()
 
+    searchValue = $("#cityInput").val()
+    console.log(searchValue)
+    findCoords(searchValue);
+  })
   // function getLocation() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(showPosition);
@@ -24,10 +30,10 @@ window.onload = function () {
   // }
 
 
-  function findCoords() {
+  function findCoords(searchValue) {
 
     $.ajax({  
-      url: "http://open.mapquestapi.com/geocoding/v1/address?key=0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j&location=Washington,DC",
+      url: "http://open.mapquestapi.com/geocoding/v1/address?key=0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j&location=" + searchValue,
       // url: "http://www.mapquestapi.com/search/v2/radius?key=KEY&maxMatches=4&origin=" + coords[0] +"," + coords[1],
       method: 'GET',
     }).then(function(data){
