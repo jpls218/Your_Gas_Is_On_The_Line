@@ -29,9 +29,8 @@ window.onload = function () {
 
       // Stores object in array 
       cityArray.push(newCity)
-      showPins()
 
-      
+      showPins()   
   })}
 
   // Call to Mapquest api
@@ -50,7 +49,6 @@ window.onload = function () {
 
       // Function calls 
       showMap(coords)
-      findGas(coords)
       fis(state)
     });
   }
@@ -100,6 +98,7 @@ window.onload = function () {
 
       // Appends to HTML div 
       $(".name").append(content)
+      
       pins(priceObj[i].city)
     }
   });
