@@ -1,1 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+.logo {
+    color: rgb(202, 202, 202);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+li,a,button {
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+.nav-item li {
+    display: inline;
+    padding: 0px 20px;
+    
+}
+.nav-item li a {
+    transition: all 0.3 ease 0;
+}
+.nav-item li a:hover {
+    color: blue;
+}
+button {
+
+    padding: 0px 15px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 53.5px;
+    cursor: pointer;
+    transition: all 0.3 ease 0;
+}
+button:hover {
+    color: rgba(0, 136, 169, 0.8);
+}
