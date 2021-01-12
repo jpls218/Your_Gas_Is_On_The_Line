@@ -174,7 +174,7 @@ window.onload = function () {
     let map = L.mapquest.map('map', {
       center: [coords.lat, coords.lng],
       layers: L.mapquest.tileLayer('map'),
-      zoom: 6
+      zoom: 10
     });
     console.log(cityArray)
     // for (i in cityArray) {

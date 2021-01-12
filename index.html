@@ -19,7 +19,7 @@
   <!-- CSS-->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="style.css">
+
 
   <!-- Favicon-->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -49,8 +49,9 @@
           <label for="fuel-options">Fuel Type</label>
           <select class="u-full-width" id="fuelOptions">
             <option value="Option 1">Regular</option>
-            <option value="Option 2">Premium</option>
-            <option value="Option 3">Diesel</option>
+            <option value="Option 2">Mid-Range</option>
+            <option value="Option 3">Premium</option>
+            <option value="Option 4">Diesel</option>
           </select>
         </div>
         <div class="two columns">
@@ -66,15 +67,18 @@
 
 
   </div>
-
+<!-- div container for map  -->
   <div id="map" style="width: 100%; height: 530px;"></div>
+
   <!-- Primary Page Layout-->
   <div class="results-container">
     <div class="row">
     
       <container class="12 columns header">
         <h1>Search Results</h1>
+        <h3>City Average</h3>
       </container>
+
       <div class="12 columns name"></div>
       <div class ="12 columns address"></div> 
       <div class="12 columns distance"></div>
@@ -96,7 +100,6 @@
   <!-- <script src="https://developer.mapquest.com/documentation/assets/js/main.js" async></script> -->
   <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
   <script src="script.js"></script>
-
 
 
   <!-- End Document-->
