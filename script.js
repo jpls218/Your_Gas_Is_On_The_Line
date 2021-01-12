@@ -1,8 +1,7 @@
 window.onload = function () {
 
-  // getLocation()
-  // findCoords()
 
+  let map
   var pricesArray = []
   var cityArray = []
   var priceObj = []
@@ -14,24 +13,7 @@ window.onload = function () {
     console.log(searchValue)
     findCoords(searchValue);
   })
-  // function getLocation() {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(showPosition);
 
-  //   } else {
-  //     x.innerHTML = "Geolocation is not supported by this browser.";
-  //   }
-
-  // }
-  // function showPosition(position) {
-  //   var lat = position.coords.latitude;
-  //   var long = position.coords.longitude;
-  //   coords = [lat, long]
-  //   showMap(coords);
-  //   findGas(coords);
-  //   findCities(coords);
-  // }
-  
     function findGas(coords) {
       console.log(coords.lat.toString())
       console.log(coords.lng.toString())
@@ -56,8 +38,8 @@ window.onload = function () {
     }).then(function(data){
       newCity = data.results[0].locations[0].latLng
       cityArray.push(newCity)
-      console.log(newCity)
-      showMap()
+      console.log(cityArray)
+      showPins()
 
       
   })}
@@ -77,19 +59,7 @@ window.onload = function () {
       fis(state)
     });
   }
-  
 
-  // function findCities(coords) {
-
-  //   $.ajax({  
-  //     url: 'https://api.allorigins.win/get?url=' + encodeURIComponent("http://www.mapquestapi.com/search/v2/radius?radius=50&key=0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j&maxMatches=4&origin=" + coords[0] +"," + coords[1]),
-  //     // url: "http://www.mapquestapi.com/search/v2/radius?key=KEY&maxMatches=4&origin=" + coords[0] +"," + coords[1],
-  //     method: 'GET',
-  //   }).then(function(data){
-  //     console.log(data)
-  //   });
-  // }
-  
 
   function fis(state){
   $.ajax({  
@@ -109,12 +79,6 @@ window.onload = function () {
       }
 
       priceObj.push(prices)
-
-      cityArray.push(prices.city)
-
-      pricesArray.push(prices.price)
-      // prices.sort( (a,b) => b - a)
-      console.log(prices)
     }
     priceObj.sort(function(a, b) {
       return a.price - b.price;
@@ -133,57 +97,36 @@ window.onload = function () {
     // console.log(pricesArray)
   });
 }
-  }
-//   $.ajax({
-//     headers: { "Accept": "application/json"},
-//     type: 'GET',
-//     url: 'https://cors-proxy.htmldriven.com/?url=https://cl.ly/2wr4',
-//     crossDomain: true,
-//     beforeSend: function(xhr){
-//         xhr.withCredentials = true;
-//   },
-//     success: function(data, textStatus, request){
-//         console.log(data);
-//     }
-// });
 
 
-// function findGas(coords) {
-//   console.log("hello world")
-//   $.ajax({
-//     url: "http://api.mygasfeed.com/stations/radius/" + coords[0] + "/" + coords[1] + "/5/reg/ylav87lih0.json?",
-//     dataType: "jsonp",
-//     cors: true,
-//     contentType: "application/json",
-//     secure: true,
-//     headers: {
-//       "Access-Control-Allow-Origin": "*",
-//     },
-//     method: "GET"
-//   }).then(function(response){
-//     console.log(response)
-//     console.log("hello world222")
-//   })
-// }
   function showMap(coords) {
 
     console.log(coords)
     L.mapquest.key = '0GxkVNACX7ZbVYmlAotnqVBEvhPvDi1j';
 
     // 'map' refers to a <div> element with the ID map
-    let map = L.mapquest.map('map', {
+    map = L.mapquest.map('map', {
       center: [coords.lat, coords.lng],
       layers: L.mapquest.tileLayer('map'),
       zoom: 6
-    });
-    console.log(cityArray)
-    // for (i in cityArray) {
-    //   L.marker([cityArray[i]..lat, coords.lng], {
-    //     icon: L.mapquest.icons.marker(),
-    //     draggable: false
-    //   }).bindPopup([coords.lat, coords.lng]).addTo(map);
-    // }
+    })
+ 
     
+    
+    
+    
+  }
+
+  function showPins(){
+    
+    for (i in cityArray) {
+      L.marker([cityArray[i].lat, cityArray[i].lng], {
+        icon: L.mapquest.icons.marker(),
+        draggable: false
+      }).bindPopup([cityArray[i].lat, cityArray[i].lng]).addTo(map);
+    }
+      // console.log(cityArray)
+      console.log("hello world")
   }
 
 
@@ -206,5 +149,5 @@ window.onclick = function(eL) {
 
 
 
-
+}
 
